@@ -1,0 +1,36 @@
+let x = proj 1 ((\x : Int -> (x, x * 2, false)) 10) in
+let y = proj 2 ((\x : Int -> (x, x * 2, x + 7)) 2) in
+(\x : Int -> (x, x + 1, (\y : Int -> y * 2) y, x * 10)) x
+
+
+
+let x = proj 2 (3, 4, 7, 11) in
+let y = proj 2 ((\x : Int -> (x, x * 2, x + 7)) 2) in
+(\z : Int -> (z, z + 1, (\y : Int -> y * 2) y, z * 10)) x
+
+
+(\x : Int -> (x, x + 1, true)) 5
+
+let f = \x : Int -> x + 1 in
+let a = f 10 in
+a
+
+let nome = "Ana" in
+let msg = "Ola, " ++ nome in
+(length msg, msg)
+
+length "abc"
+
+let x = proj 2 ((\x : Int -> (x, x * 2, x - 3)) 10) in
+let y = proj 3 ((\x : Int -> (x, x * 2, x + 7, x - 1)) 11) in
+if x > y then  (x, "Xmaior") else (y, "Ymaior")
+
+let var1 = proj 1 ((\x : Int -> (x, x * 2, false)) 10) in
+let var2 = proj 2 ((\x : Int -> (x, x * 2, x + 7)) 2) in
+if var1 == var2 then ("Sao Iguais", var1, var2) else ("Sao Diferentes", var1, var2)
+
+proj 0 ( "a" ++ "b", length "abc" )
+
+let x = (1, 2+3) in proj 1 x
+
+let x = (1, (2, 3)) in proj 1 (proj 2 x)

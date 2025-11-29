@@ -1,0 +1,12 @@
+Parser.o
+Parser.hi
+main.exe
+TypeChecker.o
+TypeChecker.hi
+Main.o
+Main.hi
+Lexer.o
+Lexer.hi
+Interpreter.o
+Interpreter.hi
+
