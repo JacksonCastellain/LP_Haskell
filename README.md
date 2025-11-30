@@ -7,7 +7,7 @@ Um interpretador minimalista escrito em Haskell com as etapas clássicas de fron
 ---
 
 ## Estrutura do projeto
-
+```arduino
 LP_Haskell/
 ├── Lexer.hs -- Tokenização
 ├── Parser.y -- Gramática (Happy)
@@ -19,6 +19,7 @@ LP_Haskell/
 ├── entraces.txt -- entradas válidas
 └── logo.svg
 
+```
 
 ---
 
