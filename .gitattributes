@@ -1,4 +1,22 @@
-*.hs text eol=lf
-*.txt text eol=lf
-*.cabal text eol=lf
-*.yaml text eol=lf
+# ------------------------------------------------------------
+# Haskell source files must ALWAYS use LF (never CRLF)
+# ------------------------------------------------------------
+*.hs     text eol=lf
+*.lhs    text eol=lf
+*.cabal  text eol=lf
+*.yaml   text eol=lf
+*.y      text eol=lf
+*.x      text eol=lf
+
+# Test files
+*.txt    text eol=lf
+*.md     text eol=lf
+
+# Avoid messing with binary files
+*.png    binary
+*.jpg    binary
+*.exe    binary
+*.o      binary
+*.hi     binary
+*.pdf    binary
+
