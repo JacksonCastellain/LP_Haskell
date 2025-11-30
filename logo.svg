@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="120" viewBox="0 0 360 120" role="img" aria-label="LP Haskell">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#5fc9ff"/>
+      <stop offset="1" stop-color="#4f46e5"/>
+    </linearGradient>
+    <style>
+      .bg { fill: url(#g); opacity: 0.12 }
+      .title { font: 700 28px "Segoe UI", Roboto, "Helvetica Neue", Arial; fill:#111827; }
+      .mono { font: 600 14px "Courier New", monospace; fill:#374151; }
+      .pill { fill:#111827; opacity:0.06; rx:10; ry:10 }
+    </style>
+  </defs>
+
+  <rect width="360" height="120" rx="12" ry="12" fill="white" stroke="#e6edf3" />
+  <rect x="18" y="18" width="84" height="84" rx="12" ry="12" class="bg"/>
+  <g transform="translate(36,36)">
+    <rect width="54" height="54" rx="8" ry="8" fill="#4f46e5"/>
+    <text x="27" y="34" text-anchor="middle" font-family="Courier New, monospace" font-size="22" font-weight="700" fill="white">λ</text>
+  </g>
+
+  <text x="120" y="50" class="title">LP Haskell</text>
+  <rect x="120" y="62" width="200" height="28" class="pill"/>
+  <text x="130" y="82" class="mono">lexer • parser • typecheck • interpreter</text>
+</svg>

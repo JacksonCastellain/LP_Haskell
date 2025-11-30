@@ -1,0 +1,92 @@
+2025-11-30T00:43:42.398508Z | Info | haskell-language-server version: 2.10.0.0 (GHC: 9.6.7) (PATH: C:\ghcup\bin\haskell-language-server-9.6.7~2.10.0.0.exe)
+2025-11-30T00:43:42.399517Z | Info | Directory: C:\LP_final\LP_Haskell
+2025-11-30T00:43:42.400501Z | Info | Starting (haskell-language-server) LSP server...
+  GhcideArguments {argsCommand = LSP, argsCwd = Nothing, argsShakeProfiling = Nothing, argsTesting = False, argsExamplePlugin = False, argsLogLevel = Info, argsLogFile = Nothing, argsLogStderr = True, argsLogClient = False, argsThreads = 0, argsProjectGhcVersion = False}
+  PluginIds: [ pragmas-suggest
+             , pragmas-completion
+             , ghcide-code-actions-bindings
+             , cabalHaskellIntegration
+             , ghcide-extend-import-action
+             , retrie
+             , stylish-haskell
+             , explicit-fields
+             , ghcide-code-actions-type-signatures
+             , ghcide-code-actions-fill-holes
+             , stan
+             , hlint
+             , changeTypeSignature
+             , ghcide-code-actions-imports-exports
+             , cabal-fmt
+             , notes
+             , ghcide-completions
+             , eval
+             , ghcide-type-lenses
+             , cabal
+             , overloaded-record-dot
+             , gadt
+             , LSPRecorderCallback
+             , importLens
+             , floskell
+             , codeRange
+             , class
+             , ormolu
+             , qualifyImportedNames
+             , ghcide-hover-and-symbols
+             , alternateNumberFormat
+             , rename
+             , splice
+             , moduleName
+             , semanticTokens
+             , fourmolu
+             , cabal-gild
+             , callHierarchy
+             , ghcide-core
+             , explicit-fixity
+             , pragmas-disable ]
+2025-11-30T00:43:42.418621Z | Info | Logging heap statistics every 60.00s
+ 2025-11-30T00:43:42.422527Z | Info | Starting LSP server...
+  If you are seeing this in a terminal, you probably should have run WITHOUT the --lsp option!
+  PluginIds: [ pragmas-suggest
+             , pragmas-completion
+             , ghcide-code-actions-bindings
+             , cabalHaskellIntegration
+             , ghcide-extend-import-action
+             , retrie
+             , stylish-haskell
+             , explicit-fields
+             , ghcide-code-actions-type-signatures
+             , ghcide-code-actions-fill-holes
+             , stan
+             , hlint
+             , changeTypeSignature
+             , ghcide-code-actions-imports-exports
+             , cabal-fmt
+             , notes
+             , ghcide-completions
+             , eval
+             , ghcide-type-lenses
+             , cabal
+             , overloaded-record-dot
+             , gadt
+             , LSPRecorderCallback
+             , importLens
+             , floskell
+             , codeRange
+             , class
+             , ormolu
+             , qualifyImportedNames
+             , ghcide-hover-and-symbols
+             , alternateNumberFormat
+             , rename
+             , splice
+             , moduleName
+             , semanticTokens
+             , fourmolu
+             , cabal-gild
+             , callHierarchy
+             , ghcide-core
+             , explicit-fixity
+             , pragmas-disable ]
+2025-11-30T00:43:42.423527Z | Info | Starting server
+2025-11-30T00:44:01.881188Z | Error | Failed to parse message header:
+:  string
