@@ -1,3 +1,1 @@
-let nome = "Ana" in
-let msg = "Ola, " ++ nome in
-msg
+(8, "Ola Ana")

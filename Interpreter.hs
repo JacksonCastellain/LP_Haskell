@@ -17,7 +17,10 @@ isValue (Proj _ _) = False
 isValue _ = False
 
 subst :: String -> Expr -> Expr -> Expr
-subst x s (Var v) = if x == v then s else Var v
+subst x s (Var v) = 
+  if x == v 
+    then s 
+    else Var v
 subst x s (Lam v tp b) =
   if x == v
     then Lam v tp b
@@ -62,21 +65,33 @@ step (Or e1 e2) = Or (step e1) e2
 step (If BTrue e1 e2) = e1
 step (If BFalse e1 e2) = e2
 step (If e1 e2 e3) = If (step e1) e2 e3
-step (Gt (Num n1) (Num n2)) = if n1 > n2 then BTrue else BFalse
+step (Gt (Num n1) (Num n2)) = 
+  if n1 > n2 
+    then BTrue 
+    else BFalse
 step (Gt (Num n1) e2) = Gt (Num n1) (step e2)
 step (Gt e1 e2) = Gt (step e1) e2
-step (Eq (Num n1) (Num n2)) = if n1 == n2 then BTrue else BFalse
+step (Eq (Num n1) (Num n2)) = 
+  if n1 == n2 
+    then BTrue 
+    else BFalse
 step (Eq BTrue BTrue) = BTrue
 step (Eq BFalse BFalse) = BFalse
 step (Eq BTrue BFalse) = BFalse
 step (Eq BFalse BTrue) = BFalse
-step (Eq (Str s1) (Str s2)) = if s1 == s2 then BTrue else BFalse
+step (Eq (Str s1) (Str s2)) = 
+  if s1 == s2 
+    then BTrue 
+    else BFalse
 step (Eq (Num n1) e2) = Eq (Num n1) (step e2)
 step (Eq BTrue e2) = Eq BTrue (step e2)
 step (Eq BFalse e2) = Eq BFalse (step e2)
 step (Eq (Str s1) e2) = Eq (Str s1) (step e2)
 step (Eq e1 e2) = Eq (step e1) e2
-step (Lt (Num n1) (Num n2)) = if n1 < n2 then BTrue else BFalse
+step (Lt (Num n1) (Num n2)) = 
+  if n1 < n2 
+    then BTrue 
+    else BFalse
 step (Lt (Num n1) e2) = Lt (Num n1) (step e2)
 step (Lt e1 e2) = Lt (step e1) e2
 step (App (Lam x tp e1) e2) =
@@ -105,9 +120,9 @@ step (Concat e1 e2) = Concat (step e1) e2
 step (Length (Str s)) = Num (length s)
 step (Length e) = Length (step e)
 step (Let x e1 e2) =
-  App (Lam x dummyType e2) e1
-  where
-    dummyType = TNum
+  if isValue e1 
+    then subst x e1 e2 
+    else Let x (step e1) e2
 step e = error $ "Error: " ++ show e
 
 eval :: Expr -> Expr
@@ -115,7 +130,9 @@ eval (Let x e1 e2) =
   let v1 = eval e1
       e2' = subst x v1 e2
    in eval e2'
-eval e = if isValue e then e else eval (step e)
+eval e = if isValue e 
+          then e 
+          else eval (step e)
 
 printPretty :: Expr -> String
 printPretty (Num n) = show n

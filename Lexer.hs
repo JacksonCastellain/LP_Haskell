@@ -81,9 +81,6 @@ lexer ('(':cs) = TokenLParen : lexer cs
 lexer (')':cs) = TokenRParen : lexer cs
 lexer ('&':'&':cs) = TokenAnd : lexer cs 
 lexer ('|':'|':cs) = TokenOr : lexer cs
-lexer ('i':'f':cs) = TokenIf : lexer cs
-lexer ('t':'h':'e':'n':cs) = TokenThen : lexer cs
-lexer ('e':'l':'s':'e':cs) = TokenElse : lexer cs
 lexer ('>':cs) = TokenGt : lexer cs
 lexer ('=':'=':cs) = TokenEq : lexer cs
 lexer ('<':cs) = TokenLt : lexer cs
