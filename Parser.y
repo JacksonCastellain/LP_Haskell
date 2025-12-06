@@ -18,7 +18,6 @@ import Lexer
   false        { TokenFalse }
   string       { TokenString $$}
   "++"         { TokenConcat }
-  "length"     { TokenLength }
   "String"     { TokenTString }
   '+'          { TokenPlus }
   '-'          { TokenSub }
@@ -39,10 +38,11 @@ import Lexer
   "Int"        { TokenTNum }  
   "Bool"       { TokenTBool } 
   ','          { TokenComma }
-  "proj"       { TokenProj }  
   "let"        { TokenLet }
   "in"         { TokenIn } 
+  "length"     { TokenLength }
   '='          { TokenEquals } 
+  "proj"       { TokenProj }  
   varid        { TokenVarId $$ }
 
 %%
@@ -54,7 +54,6 @@ Exp : num                            { Num $1 }
     | varid                          { Var $1 }
     | "let" varid '=' Exp "in" Exp   { Let $2 $4 $6 }
     | Exp "++" Exp                   { Concat $1 $3}
-    | "length" Exp                   { Length $2 }
     | Exp '+' Exp                    { Add $1 $3 }
     | Exp '-' Exp                    { Sub $1 $3 }
     | Exp '*' Exp                    { Times $1 $3 }
@@ -68,6 +67,7 @@ Exp : num                            { Num $1 }
     | "if" Exp "then" Exp "else" Exp { If $2 $4 $6 }
     | '\\' varid ':' Type  "->" Exp  { Lam $2 $4 $6 }
     | Exp Exp                        { App $1 $2 }
+    | "length" Exp                   { Length $2 }
     | "proj" num Exp                 { Proj $2 $3 }
     
 Type : "Int"                         { TNum }

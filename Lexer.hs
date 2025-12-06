@@ -53,11 +53,11 @@ data Expr = Num Int
           | Var String
           | Lam String Ty Expr
           | App Expr Expr
-          | Tuple [Expr] 
-          | Proj Int Expr   
           | Let String Expr Expr    
           | Concat Expr Expr
           | Length Expr
+          | Proj Int Expr   
+          | Tuple [Expr] 
           deriving Show
 
 
@@ -71,9 +71,6 @@ data Ty = TNum
 
 lexer :: String -> [Token]
 lexer [] = []
-lexer ('\\':cs) = TokenLambda : lexer cs
-lexer ('-':'>':cs) = TokenFun : lexer cs
-lexer ('+':'+':cs) = TokenConcat : lexer cs
 lexer ('+':cs) = TokenPlus : lexer cs 
 lexer ('-':cs) = TokenSub : lexer cs
 lexer ('*':cs) = TokenTimes : lexer cs 
@@ -87,6 +84,9 @@ lexer ('<':cs) = TokenLt : lexer cs
 lexer (':':cs) = TokenColon : lexer cs
 lexer (',':cs) = TokenComma : lexer cs
 lexer ('=':cs) = TokenEquals : lexer cs
+lexer ('\\':cs) = TokenLambda : lexer cs
+lexer ('-':'>':cs) = TokenFun : lexer cs
+lexer ('+':'+':cs) = TokenConcat : lexer cs
 lexer ('\"':cs) =
   let (str, rest) = break (\c -> c == '\"' || c == '\n') cs
   in case rest of
@@ -108,16 +108,16 @@ lexVarOrKw :: String -> [Token]
 lexVarOrKw cs = case span (\c -> isAlpha c || isDigit c) cs of 
   ("true", rest)  -> TokenTrue : lexer rest 
   ("false", rest) -> TokenFalse : lexer rest 
+    ("proj", rest)  -> TokenProj : lexer rest 
+  ("let", rest)   -> TokenLet : lexer rest 
+  ("in", rest)    -> TokenIn : lexer rest  
+  ("length", rest) -> TokenLength : lexer rest  
   ("if", rest)    -> TokenIf : lexer rest 
   ("then", rest)  -> TokenThen : lexer rest 
   ("else", rest)  -> TokenElse : lexer rest 
   ("Int", rest)   -> TokenTNum : lexer rest 
   ("Bool", rest)  -> TokenTBool : lexer rest  
   ("String", rest) -> TokenTString : lexer rest  
-  ("proj", rest)  -> TokenProj : lexer rest 
-  ("let", rest)   -> TokenLet : lexer rest 
-  ("in", rest)    -> TokenIn : lexer rest  
-  ("length", rest) -> TokenLength : lexer rest  
   (ident, rest)   -> 
     if null ident 
       then error "Empty Identificator"
