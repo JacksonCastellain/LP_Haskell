@@ -14,14 +14,14 @@ typeof ctx BFalse = Just TBool
 typeof ctx (Str _) = Just TString
 typeof ctx (Var x) = lookup x ctx
 typeof ctx (Lam x tp b) = let ctx' = (x, tp): ctx
-                              in case typeof ctx' b of
-                                Just tr -> Just (TFun tp tr)
-                                _ -> Nothing
+    in case typeof ctx' b of
+      Just tr -> Just (TFun tp tr)
+      _ -> Nothing
 typeof ctx (App e1 e2) = case typeof ctx e1 of
-                          Just (TFun tp tr) -> case typeof ctx e2 of
-                                      Just t2 | t2 == tp -> Just tr
-                                      _ -> Nothing
-                          _ -> Nothing
+    Just (TFun tp tr) -> case typeof ctx e2 of
+                Just t2 | t2 == tp -> Just tr
+                _ -> Nothing
+    _ -> Nothing
 
 typeof ctx (Add e1 e2) = case (typeof ctx e1, typeof ctx e2) of
   (Just TNum, Just TNum) -> Just TNum
